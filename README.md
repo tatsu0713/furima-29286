@@ -33,11 +33,12 @@ Things you may want to cover:
 | --------------------- | ------- | ----------- |
 | nickname              | string  | null: false |
 | email                 | string  | null: false |
-| password              | string  | null: false |
-| password_confirmation | string  | null: false |
-| kanji_name            | string  | null: false |
-| kana_name             | string  | null: false |
-| birthday              | integer | null: false |
+| encrypted_password    | string  | null: false |
+| kanji_family_name     | string  | null: false |
+| kanji_first_name      | string  | null: false |
+| kana_family_name      | string  | null: false |
+| kana_first_name       | string  | null: false |
+| date                  | integer | null: false |
 
 ### Association
 
@@ -50,21 +51,20 @@ Things you may want to cover:
 
 | Column        |  Type      | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| email         | references | null: false, foreign_key: true |
-| password      | references | null: false, foreign_key: true |
-| image         | string     | null: false                    |
-| item_name     | string     | null: false                    |
-| explanation   | text       | null: false                    |
-| category      | string     | null: false                    |
-| item_status   | string     | null: false                    |
-| item_burden   | string     | null: false                    |
-| delivery_area | string     | null: false                    |
-| shipping_day  | string     | null: false                    |
-| selling_price | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - has_one :purchase
+- belongs_to_active_hash :image
+- belongs_to_active_hash :item_name
+- belongs_to_active_hash :explanation
+- belongs_to_active_hash :category
+- belongs_to_active_hash :item_status
+- belongs_to_active_hash :item_burden
+- belongs_to_active_hash :delivery_area
+- belongs_to_active_hash :shipping_day
+- belongs_to_active_hash :selling_price
 
 
 
@@ -72,8 +72,7 @@ Things you may want to cover:
 
 | Column           |  Type      | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| email            | references | null: false, foreign_key: true |
-| password         | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 | card_information | integer    | null: false                    |
 | expiration_day   | integer    | null: false                    |
 | security_code    | integer    | null: false                    |
@@ -88,8 +87,6 @@ Things you may want to cover:
 
 | Column           |  Type      | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| email            | references | null: false, foreign_key: true |
-| password         | references | null: false, foreign_key: true |
 | post_number      | integer    | null: false                    |
 | prefecture       | string     | null: false                    |
 | municipality     | string     | null: false                    |
