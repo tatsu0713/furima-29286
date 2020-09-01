@@ -64,7 +64,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- has_many :purchases
+- has_many :item_purchases
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_status
 - belongs_to_active_hash :item_burden
@@ -99,5 +99,5 @@ Things you may want to cover:
 | phone_number     | string     | null: false                    |
 
 ### Association
-- belongs_to :purchase
+- belongs_to :item_purchase
 - belongs_to_active_hash :prefecture
