@@ -38,7 +38,7 @@ Things you may want to cover:
 | kanji_first_name      | string  | null: false |
 | kana_family_name      | string  | null: false |
 | kana_first_name       | string  | null: false |
-| date                  | integer | null: false |
+| birthday              | date    | null: false |
 
 ### Association
 
@@ -49,35 +49,40 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column        |  Type      | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| user          | references | null: false, foreign_key: true |
+| Column           |  Type      | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| image            | string     | null: false                    |
+| item_name        | string     | null: false                    |
+| explanation      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| item_status_id   | integer    | null: false                    |
+| item_burden_id   | integer    | null: false                    |
+| delivery_area_id | integer    | null: false                    |
+| shipping_day_id  | integer    | null: false                    |
+| selling_price    | integer    | null: false                    |
+
 
 ### Association
 - belongs_to :user
-- has_one :purchase
-- belongs_to_active_hash :image
-- belongs_to_active_hash :item_name
-- belongs_to_active_hash :explanation
+- has_many :purchases
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_status
 - belongs_to_active_hash :item_burden
 - belongs_to_active_hash :delivery_area
 - belongs_to_active_hash :shipping_day
-- belongs_to_active_hash :selling_price
 
 
 
 ## purchases テーブル
 
-| Column           |  Type      | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| user             | references | null: false, foreign_key: true |
-| card_information | integer    | null: false                    |
-| expiration_day   | integer    | null: false                    |
-| security_code    | integer    | null: false                    |
+| Column  |  Type      | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user_id | references | null: false, foreign_key: true |
+| item_id | references | null: false, foreign_key: true |
 
 ### Association
+- belongs_to :user
 - belongs_to :item
 - has_one :delivery_address
 
@@ -87,12 +92,13 @@ Things you may want to cover:
 
 | Column           |  Type      | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| post_number      | integer    | null: false                    |
-| prefecture       | string     | null: false                    |
+| post_number      | string     | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | municipality     | string     | null: false                    |
 | address          | string     | null: false                    |
 | building         | string     |                                |
-| phone_number     | integer    | null: false                    |
+| phone_number     | string     | null: false                    |
 
 ### Association
 - belongs_to :purchase
+- belongs_to_active_hash :prefecture
