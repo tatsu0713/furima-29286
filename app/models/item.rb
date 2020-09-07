@@ -10,10 +10,9 @@ class Item < ApplicationRecord
   has_one_attached :image
 
 
-  validates :name, :explanation, :category, :item_status, :item_burden, :delivery_area, :shipping_day, presence: true
-  validates :selling_price, presence: true, format: { with: /\A[0-9]+\z/}, length: { in: 300..9999999}
+  validates :name, :explanation, presence: true
+  validates :selling_price, presence: true, format: { with: /\A[0-9]+\z/}, numericality: { greater_than_or_equal_to:300 ,less_than_or_equal_to:9999999 , message: "範囲外です"}
   validates :image, presence: true
 
-  validates :category_id, :item_status_id, :item_burden_id, :delivery_area_id, :shipping_day_id, numericality: { other_than: 1 }
-
+  validates :category_id, :item_status_id, :item_burden_id, :delivery_area_id, :shipping_day_id, numericality: { other_than: 1, message: "を選択してください"}
 end
