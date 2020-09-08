@@ -11,12 +11,3 @@ function price(){
   });
 }
 window.addEventListener("load", price);
-
-
-// function price (){
-//   const prices = document.getElementById("item-price");
-//   prices.addEventListener("input", () => {
-//     console.log('input ok')
-//   });
-// }
-// window.addEventListener("load", price);
