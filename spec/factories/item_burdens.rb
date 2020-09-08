@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :item_burden do
-    name       {"aaa"}
+    name {'aaa'}
   end
 end

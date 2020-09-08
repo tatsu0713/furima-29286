@@ -87,7 +87,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Kanji family nameを入力してください')
       end
       it 'kanji_family_nameが全角(漢字、ひらがな、カタカナ)でなければ登録できない' do
-        @user.kanji_family_name = "abcde123"
+        @user.kanji_family_name = 'abcde123'
         @user.valid?
         expect(@user.errors.full_messages).to include('Kanji family nameは不正な値です')
       end
@@ -97,7 +97,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Kanji first nameを入力してください')
       end
       it 'kanji_first_nameが全角(漢字、ひらがな、カタカナ)でなければ登録できない' do
-        @user.kanji_first_name = "abcdef123"
+        @user.kanji_first_name = 'abcdef123'
         @user.valid?
         expect(@user.errors.full_messages).to include('Kanji first nameは不正な値です')
       end
@@ -107,7 +107,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Kana family nameを入力してください')
       end
       it 'kana_family_nameが全角(カタカナ)でなければ登録できない' do
-        @user.kana_family_name = "aadddd2222"
+        @user.kana_family_name = 'aadddd2222'
         @user.valid?
         expect(@user.errors.full_messages).to include('Kana family nameは不正な値です')
       end
@@ -117,7 +117,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Kana first nameを入力してください')
       end
       it 'kana_first_nameが全角(カタカナ)でなければ登録できない' do
-        @user.kana_first_name = "aaaa1111"
+        @user.kana_first_name = 'aaaa1111'
         @user.valid?
         expect(@user.errors.full_messages).to include('Kana first nameは不正な値です')
       end

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :shipping_day do
-    name         {"aaa"}
+    name {'aaa'}
   end
 end
