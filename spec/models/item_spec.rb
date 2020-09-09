@@ -7,7 +7,27 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品情報の保存' do
     context '出品がうまくいく時' do
-      it 'name, explanation, category_id, item_status_id, item_burden_id, delivery_area_id, shipping_day_id, imageが存在すれば出品できる。' do
+      it 'name, explanation, imageが存在すれば出品できる。' do
+        expect(@item).to be_valid
+      end
+      it 'category_idで1以外を選択すると保存できる' do
+        @item.category_id = '2'
+        expect(@item).to be_valid
+      end
+      it 'item_status_idで1以外を選択すると保存できる' do
+        @item.item_status_id = '2'
+        expect(@item).to be_valid
+      end
+      it 'item_burden_idで1以外を選択すると保存できる' do
+        @item.item_burden_id = '2'
+        expect(@item).to be_valid
+      end
+      it 'delivery_area_idで1以外を選択すると保存できる' do
+        @item.delivery_area_id = '2'
+        expect(@item).to be_valid
+      end
+      it 'shipping_day_idで1以外を選択すると保存できる' do
+        @item.shipping_day_id = '2'
         expect(@item).to be_valid
       end
       it 'selling_priceが半角数字のみであれば保存できる' do
@@ -31,28 +51,28 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Explanationを入力してください')
       end
-      it 'category_idを選択してないと保存できない' do
-        @item.category_id = ''
+      it 'category_idで1を選択すると保存できない' do
+        @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include('Categoryを選択してください')
       end
-      it 'item_status_idを選択してないと保存できない' do
-        @item.item_status_id = ''
+      it 'item_status_idで1を選択すると保存できない' do
+        @item.item_status_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include('Item statusを選択してください')
       end
-      it 'item_burden_idを選択してないと保存できない' do
-        @item.item_burden_id = ''
+      it 'item_burden_idで1を選択すると保存できない' do
+        @item.item_burden_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include('Item burdenを選択してください')
       end
-      it 'delivery_area_idを選択してないと保存できない' do
-        @item.delivery_area_id = ''
+      it 'delivery_area_idで1を選択すると保存できない' do
+        @item.delivery_area_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery areaを選択してください')
       end
-      it 'shipping_day_idを選択してないと保存できない' do
-        @item.shipping_day_id = ''
+      it 'shipping_day_idで1を選択すると保存できない' do
+        @item.shipping_day_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping dayを選択してください')
       end
