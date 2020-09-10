@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   validates :name, :explanation, presence: true
-  validates :selling_price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: '範囲外です' }
+  validates :selling_price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: '範囲外です' }
   validates :selling_price, numericality: { with: /\A[0-9]+\z/, message: 'は半角数字で入力してください' }
   validates :image, presence: { message: 'を選択してください'}
 
