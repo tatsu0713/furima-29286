@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   
-  # before_action :move_index
+  before_action :move_index
 
   def index
     # @order = Order.new
@@ -13,12 +13,13 @@ class OrdersController < ApplicationController
   def new
   end
 
-  # private
+  private
 
-  # def move_index
-  #   if user_signed_in? && current_user.id == @item.user_id
-  #     redirect_to root_path
-  #   end
-  # end
+  def move_index
+    # @item = Item.find(params[:item_id])
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
   
 end
