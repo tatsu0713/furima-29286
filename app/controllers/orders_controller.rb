@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   private
 
   def move_index
-    # @item = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
     if user_signed_in? && current_user.id == @item.user_id
       redirect_to root_path
     end
