@@ -1,3 +1,0 @@
-class ItemPurchase < ApplicationRecord
-  
-end
