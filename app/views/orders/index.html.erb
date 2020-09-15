@@ -34,7 +34,7 @@
 
     <%= form_with model: @delivery_address, url: item_orders_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%# カード情報の入力 %>
-    <%# <%= render 'shared/error_messages', model: @delivery_address %>
+    <%= render 'shared/error_messages', model: @delivery_address %>
 
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>

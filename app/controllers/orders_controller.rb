@@ -5,9 +5,17 @@ class OrdersController < ApplicationController
   def index
     # @order = Order.new
     @item = Item.find(params[:item_id])
+    @delivery_address = OrderAddress.new
   end
 
   def create
+    @delivery_address = OrderAddress.new(address_params)
+    if @delivery_address.valid?
+      @delivery_address.save
+      return redirect_to root_path
+    else
+      render "index"
+    end
   end
 
   def new
@@ -21,5 +29,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
     end
   end
-  
+  def address_params
+    params.require(:order_address).permit(:post_number, :delivery_area_id, :municipality, :address, :building, :phone_number)
+  end
 end
