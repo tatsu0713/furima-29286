@@ -30,7 +30,6 @@
       </p>
     </div>
     <%# /支払額の表示 %>
-    <%# <%= render 'shared/error_messages', model: @item %>
 
     <%= form_with model: @delivery_address, url: item_orders_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%# カード情報の入力 %>

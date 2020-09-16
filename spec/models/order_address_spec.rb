@@ -29,6 +29,11 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     context '購入がうまくいかない時' do
+      it 'tokenが空だと保存できない' do
+        @order_address.token = ""
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Tokenを入力してください")
+      end
       it 'post_numberが空だと保存できない' do
         @order_address.post_number = ""
         @order_address.valid?

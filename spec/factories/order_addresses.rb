@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :order_address do
+    token               {"333"}
     post_number         {"333-3333"}
     delivery_area_id    {2}
     municipality        {"名古屋市中区"}

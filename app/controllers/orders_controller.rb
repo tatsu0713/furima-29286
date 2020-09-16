@@ -4,20 +4,25 @@ class OrdersController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    @order = OrderAddress.new
     @delivery_address = OrderAddress.new
   end
 
   def create
     @delivery_address = OrderAddress.new(address_params)
+    @item = Item.find(params[:item_id])
     if @delivery_address.valid?
       pay_item
       @delivery_address.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render "index"
     end
   end
+
+  # def  done
+  #   @product_order= Product.find(params[:id])
+  #   @product_order.update( order_id: current_user.id)
+  # end
 
   private
 
@@ -29,12 +34,13 @@ class OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:order_address).permit(:post_number, :delivery_area_id, :municipality, :address, :building, :phone_number, :token, :item_id).merge(user_id: current_user.id)
+    params.require(:order_address).permit(:post_number, :delivery_area_id, :municipality, :address, :building, :phone_number).merge(user_id: current_user.id, token: params[:token], item_id: params[:item_id])
   end
 
   def pay_item
-    Pay.api_key = "sk_test_a99e9775895ee7f718c10ded"
-    Pay::Charge.create(
+    Payjp.api_key = "sk_test_a99e9775895ee7f718c10ded"
+    Payjp::Charge.create(
+      amount: @item.selling_price,
       card: address_params[:token],
       currency:'jpy'
     )

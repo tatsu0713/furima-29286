@@ -97,6 +97,7 @@ Things you may want to cover:
 | address          | string     | null: false                    |
 | building         | string     |                                |
 | phone_number     | string     | null: false                    |
+| order_id         | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :order
