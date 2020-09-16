@@ -1,7 +1,7 @@
 class OrderAddress
 
   include ActiveModel::Model
-  attr_accessor :post_number, :delivery_area_id, :municipality, :address, :building, :phone_number, :token, :user_id, :item_id, :token
+  attr_accessor :post_number, :delivery_area_id, :municipality, :address, :building, :phone_number, :token, :user_id, :item_id
 
   with_options presence: true do
     validates :post_number, format: { with: /\A\d{3}[-]\d{4}\z/ , message: "を正しく入力してください"}
