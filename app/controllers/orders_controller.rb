@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   
   before_action :move_index
+  before_action :order_move_index
 
   def index
     @item = Item.find(params[:item_id])
@@ -18,10 +19,6 @@ class OrdersController < ApplicationController
       render "index"
     end
   end
-
-
-  #   @order= Order.find(params[:id])
-  #   @product_order.update( order_id: current_user.id)
 
   private
 
@@ -43,6 +40,10 @@ class OrdersController < ApplicationController
       card: address_params[:token],
       currency:'jpy'
     )
+  end
+
+  def order_move_index
+    redirect_to root_path if @item.orders.present?
   end
 
 end
