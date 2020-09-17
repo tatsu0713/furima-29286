@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :move_index
   before_action :order_move_index
-  before_action :set_order, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @delivery_address = OrderAddress.new
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
     redirect_to root_path if @item.orders.present?
   end
 
-  def set_order
+  def set_item
     @item = Item.find(params[:item_id])
   end
 end
