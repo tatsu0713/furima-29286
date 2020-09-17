@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
-  has_many :item_purchases
+  has_many :orders
   belongs_to_active_hash :category
   belongs_to_active_hash :item_status
   belongs_to_active_hash :item_burden

@@ -10,12 +10,6 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def destroy
     if @item.destroy
       redirect_to root_path
@@ -49,7 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to '/users/sign_in' unless user_signed_in?
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def set_item

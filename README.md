@@ -43,7 +43,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :item_purchases
+- has_many :orders
 
 
 
@@ -64,7 +64,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- has_many :item_purchases
+- has_many :orders
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_status
 - belongs_to_active_hash :item_burden
@@ -73,7 +73,7 @@ Things you may want to cover:
 
 
 
-## item_purchases テーブル
+## orders テーブル
 
 | Column  |  Type      | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -92,12 +92,13 @@ Things you may want to cover:
 | Column           |  Type      | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | post_number      | string     | null: false                    |
-| prefecture_id    | integer    | null: false                    |
+| delivery_area_id | integer    | null: false                    |
 | municipality     | string     | null: false                    |
 | address          | string     | null: false                    |
 | building         | string     |                                |
 | phone_number     | string     | null: false                    |
+| order_id         | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :item_purchase
-- belongs_to_active_hash :prefecture
+- belongs_to :order
+- belongs_to_active_hash :delivery_area
