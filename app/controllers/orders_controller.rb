@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  
   before_action :move_index
   before_action :order_move_index
 
@@ -16,7 +15,7 @@ class OrdersController < ApplicationController
       @delivery_address.save
       redirect_to root_path
     else
-      render "index"
+      render 'index'
     end
   end
 
@@ -24,9 +23,7 @@ class OrdersController < ApplicationController
 
   def move_index
     @item = Item.find(params[:item_id])
-    if user_signed_in? && current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
   end
 
   def address_params
@@ -34,16 +31,15 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.selling_price,
       card: address_params[:token],
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
 
   def order_move_index
     redirect_to root_path if @item.orders.present?
   end
-
 end
